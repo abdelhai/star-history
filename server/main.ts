@@ -12,12 +12,10 @@ import {
   replaceSVGContentFilterWithCamelcase,
   getBase64Image,
 } from "./utils";
-import { getNextToken, initTokenFromEnv } from "./token";
 import { ChartMode } from "../types/chart";
 import { CHART_SIZES, CHART_TYPES, MAX_REQUEST_AMOUNT } from "./const";
 
 const startServer = async () => {
-  await initTokenFromEnv();
 
   const app = new Koa();
   app.use(cors());
@@ -62,7 +60,7 @@ const startServer = async () => {
     }
 
     if (nodataRepos.length > 0) {
-      const token = getNextToken();
+      const token = process.env.GITHUB_TOKEN;
 
       try {
         const data = await getRepoData(nodataRepos, token, MAX_REQUEST_AMOUNT);
