@@ -1,5 +1,5 @@
 import LRUCache from "lru-cache";
-import utils from "../common/utils";
+import utils from "./common/utils";
 
 /**
  * A repo star data is type of RepoStarData, and its memory costs might be 896 bytes.
